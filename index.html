@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <div class="container mx-auto w-75 shadow shadow-lg text-center p-5 mt-5">
+        <h1 class="fw-bold">CURRENCY CONVERTER</h1>
+        <div id="result"></div>
+        <div id="inputContainer"></div>
+        <div id="alertmsg"></div>
+        <div id="buttonContainer"></div>
+        <button class="btn btn-info fs-5" onclick="dolla ()">Dollar To Naira</button>
+        <button class="btn btn-info fs-5" onclick="naira ()">Naira To Dollar</button>
+        <button class="btn btn-info fs-5" onclick="euro ()">Euro To Naira</button>
+        <button class="btn btn-info fs-5" onclick="narEuro ()">Naira To Euro</button>
+        <button class="btn btn-danger d-block mx-auto mt-2 w-25 fs-5 ref" onclick="refresh ()">Refresh</button>
+    </div>
+
+    <script>
+        function showAlert(message,className) {
+            alertmsg.innerText = message
+            alertmsg.className = className
+        }
+        function dolla () {
+            inputContainer.innerHTML = ""
+            buttonContainer.innerHTML = ""
+            inputContainer.innerHTML += `<input class="form-control w-50 mx-auto mb-3" type="number" id="userInput" placeholder="$">`
+            buttonContainer.innerHTML += `<button class="btn btn-warning fs-5 mb-3" onclick="exchange ()">Exchange</button>`
+        }
+        function exchange () {
+            var user = userInput.value
+            if(user == "") {
+                showAlert('Field cannot be empty!', 'alert alert-danger')
+                setTimeout(()=>{
+                    alertmsg.innerText = ""
+                    alertmsg.className = ""
+                },3000)
+            }
+            else{
+                var total = user * 750
+                result.innerHTML = `<h2 class="border border-primary m-3 p-3 text-primary">₦${(total).toFixed(2)}</h2>`
+            }
+        }
+        function naira () {
+            inputContainer.innerHTML = ""
+            buttonContainer.innerHTML = ""
+            inputContainer.innerHTML += `<input class="form-control w-50 mx-auto mb-3" type="number" id="userInput" placeholder="₦">`
+            buttonContainer.innerHTML += `<button class="btn btn-warning fs-5 mb-3" onclick="exNairaDoll ()">Exchange</button>`
+        }
+        function exNairaDoll () {
+            var user = userInput.value
+            if(user == "") {
+                showAlert('Field cannot be empty!', 'alert alert-danger')
+                setTimeout(()=>{
+                    showAlert = ""
+                    alertmsg.innerText = ""
+                    alertmsg.className = ""
+                },3000)
+            }
+            else{
+                var total = user / 750
+                result.innerHTML = `<h2 class="border border-primary m-3 p-3 text-primary">$${(total).toFixed(2)}</h2>`
+            }
+        }
+        function euro () {
+            inputContainer.innerHTML = ""
+            buttonContainer.innerHTML = ""
+            inputContainer.innerHTML += `<input class="form-control w-50 mx-auto mb-3" type="number" id="userInput" placeholder="₤">`
+            buttonContainer.innerHTML += `<button class="btn btn-warning fs-5 mb-3" onclick="exEuroNaira ()">Exchange</button>`
+        }
+        function exEuroNaira () {
+            var user = userInput.value
+            if(user == "") {
+                showAlert('Field cannot be empty!', 'alert alert-danger')
+                setTimeout(()=>{
+                    showAlert = ""
+                    alertmsg.innerText = ""
+                    alertmsg.className = ""
+                },3000)
+            }
+            else{
+                var total = user * 850
+                result.innerHTML = `<h2 class="border border-primary m-3 p-3 text-primary">₦${(total).toFixed(2)}</h2>`
+            }
+        }
+        function narEuro () {
+            inputContainer.innerHTML = ""
+            buttonContainer.innerHTML = ""
+            inputContainer.innerHTML += `<input class="form-control w-50 mx-auto mb-3" type="number" id="userInput" placeholder="₦">`
+            buttonContainer.innerHTML += `<button class="btn btn-warning fs-5 mb-3" onclick="exNairaEuro ()">Exchange</button>`
+        }
+        function exNairaEuro () {
+            var user = userInput.value
+            if(user == "") {
+                showAlert('Field cannot be empty!', 'alert alert-danger')
+                setTimeout(()=>{
+                    showAlert = ""
+                    alertmsg.innerText = ""
+                    alertmsg.className = ""
+                },3000)
+            }
+            else{
+                var total = user / 850
+                result.innerHTML = `<h2 class="border border-primary m-3 p-3 text-primary">₤${(total).toFixed(2)}</h2>`
+            }
+        }
+        function refresh () {
+            inputContainer.innerHTML = ""
+            buttonContainer.innerHTML = ""
+            result.innerHTML = ""
+            alertmsg.innerText = ""
+            alertmsg.className = ""
+        }
+    </script>
+</body>
+</html>

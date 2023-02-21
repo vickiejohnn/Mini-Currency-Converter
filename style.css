@@ -1,0 +1,17 @@
+@media screen and (max-width: 500px) {
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        width: 80vw !important;
+    }
+    button{
+        width: 200px;
+        margin: 5px;
+    }
+    .ref{
+        width: 200px !important;
+    }
+}
